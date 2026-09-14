@@ -15,8 +15,7 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0,
-						1
+						0
 					]
 				}
 			],
@@ -31,8 +30,7 @@
 					"name" : "labOne_2",
 					"targetIndexes" : 
 					[
-						0,
-						1
+						0
 					]
 				}
 			],
@@ -41,15 +39,8 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "labOne_2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-labOne_2-Debug-42a0b17d66c40358fa82.json",
+					"jsonFile" : "target-labOne_2-Debug-9547c1457d303d104c4f.json",
 					"name" : "labOne_2",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test-Debug-fe5f58706ebd1a8b9b4a.json",
-					"name" : "test",
 					"projectIndex" : 0
 				}
 			]

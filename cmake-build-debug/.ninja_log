@@ -1,0 +1,15 @@
+# ninja log v6
+26	441	8110700285920531	CMakeFiles/test.dir/test/test_shrdptr.cpp.obj	f1b72c8d743e4595
+18	280	8110711439379615	build.ninja	6752afc0707c3321
+33	403	8110700963781320	CMakeFiles/labOne_2.dir/test/test_unqptr.cpp.obj	17fc40265b9d95f8
+23	1032	8110707621810968	CMakeFiles/labOne_2.dir/src/main.cpp.obj	36c9275bd0a46599
+37	421	8110700963821208	CMakeFiles/labOne_2.dir/test/test_shrdptr.cpp.obj	9cd2d64d6be1f100
+34	485	8110700286000553	CMakeFiles/test.dir/test/test_subtyping.cpp.obj	3cd2c66411cfcefa
+22	465	8110700285870568	CMakeFiles/test.dir/test/test_unqptr.cpp.obj	4da29389bb76d0cf
+30	468	8110700285960578	CMakeFiles/test.dir/test/test_dynamicarray.cpp.obj	12faac9011815fb0
+41	433	8110700963861202	CMakeFiles/labOne_2.dir/test/test_dynamicarray.cpp.obj	52b88e5486034a3e
+45	452	8110700963901202	CMakeFiles/labOne_2.dir/test/test_subtyping.cpp.obj	4b6e6baf3ad302cc
+23	682	8110711863144524	CMakeFiles/labOne_2.dir/test/load_test.cpp.obj	b4f977f31e53685e
+683	804	8110711869743949	labOne_2.exe	16fa1b0cb1b6b9c3
+5	798	8110730912706307	CMakeFiles/labOne_2.dir/test/load_test.cpp.obj	b4f977f31e53685e
+798	939	8110730920636212	labOne_2.exe	16fa1b0cb1b6b9c3

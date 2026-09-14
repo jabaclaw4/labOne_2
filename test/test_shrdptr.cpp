@@ -1,5 +1,5 @@
-#include "../UnqPtr.h"
-#include "../ShrdPtr.h"
+#include "headers//UnqPtr.h"
+#include "headers//ShrdPtr.h"
 #include <cassert>
 #include <iostream>
 

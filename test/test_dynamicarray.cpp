@@ -1,4 +1,4 @@
-#include "../DynamicArray.h"
+#include "headers/DynamicArray.h"
 #include <cassert>
 #include <iostream>
 #include <stdexcept>
