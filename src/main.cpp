@@ -27,6 +27,7 @@ void RunAllFunctionalTests() {
 // Небольшая живая демонстрация — показывает useCount() в реальном времени,
 // удобно для защиты: наглядно видно, как меняется счётчик
 void RunLiveDemo() {
+
     std::cout << "\n--- Live demo: UnqPtr + ShrdPtr ---\n";
 
     UnqPtr<int> owner(new int(42));
