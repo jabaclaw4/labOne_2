@@ -5,14 +5,11 @@
 #include <string>
 #include <limits>
 
-// Функциональные тесты определены в test/*.cpp — здесь только объявления,
-// чтобы main.cpp мог их вызвать (реализация подключается на этапе линковки)
 void RunUnqPtrTests();
 void RunShrdPtrTests();
 void RunDynamicArrayTests();
 void RunSubtypingTests();
 
-// Нагрузочные тесты определены в test/load_test.cpp
 void RunLoadTests();
 
 void RunAllFunctionalTests() {
@@ -24,8 +21,7 @@ void RunAllFunctionalTests() {
     std::cout << "All functional tests passed.\n";
 }
 
-// Небольшая живая демонстрация — показывает useCount() в реальном времени,
-// удобно для защиты: наглядно видно, как меняется счётчик
+//живое демо показывает useCount() в реальном времени, видно как меняется счетчик
 void RunLiveDemo() {
 
     std::cout << "\n--- Live demo: UnqPtr + ShrdPtr ---\n";
@@ -47,7 +43,7 @@ void RunLiveDemo() {
 }
 
 void PrintMenu() {
-    std::cout << "\n=== Smart Pointers Lab — Console Menu ===\n";
+    std::cout << "\n=== Smart Pointers Lab ===\n";
     std::cout << "1. Run full functional test suite\n";
     std::cout << "2. Run load tests (time & memory, saves CSV)\n";
     std::cout << "3. Live demo (UnqPtr + ShrdPtr walkthrough)\n";
@@ -61,7 +57,7 @@ int main() {
 
         int choice;
         if (!(std::cin >> choice)) {
-            // некорректный ввод (например, буквы вместо числа)
+            //некорректный ввод
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Invalid input, try again.\n";

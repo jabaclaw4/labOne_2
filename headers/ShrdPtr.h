@@ -2,19 +2,16 @@
 #include "UnqPtr.h"
 #include <type_traits> // ДОБАВЛЕНО
 
-// ShrdPtr<T> — умный указатель с разделяемым владением.
-// По условию задания не хранит T* напрямую, а ссылается на UnqPtr<T>,
-// через который и получает доступ к объекту.
-// Подсчёт ссылок ведётся полем size_t* referenceCount, которое ShrdPtr
-// создаёт при первом обращении к UnqPtr и удаляет, когда счётчик доходит до нуля.
-// Сам управляемый объект ShrdPtr не удаляет — это ответственность UnqPtr.
+// ShrdPtr<T> умный указатель с разделяемым владением по условию задания не хранит T* напрямую а ссылается на UnqPtr<T>,
+//подсчёт ссылок ведётся полем size_t* referenceCount которое ShrdPtr создаёт при первом обращении к UnqPtr и удаляет, когда счётчик доходит до нуля.
+//сам управляемый объект ShrdPtr не удаляет это ответственность UnqPtr так как он управляет объектом
 template <typename T>
 class ShrdPtr {
 private:
     UnqPtr<T>* master;
     size_t* referenceCount;
 
-    template <typename U> friend class ShrdPtr; // ДОБАВЛЕНО: доступ между ShrdPtr<U> и ShrdPtr<T>
+    template <typename U> friend class ShrdPtr;
 
     void detach() noexcept {
         if (referenceCount == nullptr) return;
