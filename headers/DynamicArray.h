@@ -5,19 +5,17 @@
 #include <utility>
 #include <stdexcept>
 
-// DynamicArray<T> — динамический массив на основе UnqPtr<T>.
-// Каждый элемент хранится через единоличное владение (UnqPtr),
-// разделяемый доступ к элементу выдаётся через ShrdPtr<T>.
+//DynamicArray<T> динамический массив на основе UnqPtr<T>. Каждый элемент хранится через владение (UnqPtr) разделяемый доступ к элементу выдаётся через ShrdPtr<T>.
 
 template <typename T>
 class DynamicArray {
 private:
-    UnqPtr<T>* items; // сырой массив умных указателей
-    size_t count;      // сколько элементов реально добавлено
-    size_t capacity;   // сколько места выделено под массив
+    UnqPtr<T>* items; //сырой массив умных указателей
+    size_t count;      //сколько элементов реально добавлено
+    size_t capacity;   //сколько места выделено под массив
 
-    // Увеличивает вместимость вдвое (или до 4, если массив был пуст).
-    // Копировать UnqPtr нельзя — элементы переносятся через move.
+    //увеличивает вместимость вдвое (или до 4, если массив был пуст)
+    //копировать UnqPtr нельзя элементы переносятся через move
     void Grow() {
         size_t newCapacity = (capacity == 0) ? 4 : capacity * 2;
         UnqPtr<T>* newItems = new UnqPtr<T>[newCapacity];
@@ -38,11 +36,10 @@ public:
         delete[] items;
     }
 
-    // Копирование всего контейнера не реализуем — вне рамок задания
-    DynamicArray(const DynamicArray&) = delete;
+    DynamicArray(const DynamicArray&) = delete;//копирование не реализовано
     DynamicArray& operator=(const DynamicArray&) = delete;
 
-    // Move для самого контейнера — разрешаем, это дёшево (просто передать указатель)
+    //move для самого контейнера
     DynamicArray(DynamicArray&& other) noexcept
             : items(other.items), count(other.count), capacity(other.capacity) {
         other.items = nullptr;
@@ -63,8 +60,7 @@ public:
         return *this;
     }
 
-    // Добавляет элемент. rawPtr должен быть создан через new,
-    // владение переходит массиву.
+    //добавляет элемент. rawPtr должен быть создан через new владение переходит массиву
     void PushBack(T* rawPtr) {
         if (count == capacity) {
             Grow();
@@ -73,19 +69,19 @@ public:
         ++count;
     }
 
-    // Удаляет последний элемент
+    //удаляет последний элемент
     void PopBack() {
         if (count == 0) {
             throw std::out_of_range("DynamicArray: PopBack on empty array");
         }
         --count;
-        items[count].reset(); // явно освобождаем объект, UnqPtr остаётся пустым
+        items[count].reset(); //явно освобождаем объект UnqPtr остаётся пустым
     }
 
     size_t Size() const noexcept { return count; }
     bool IsEmpty() const noexcept { return count == 0; }
 
-    // Прямой доступ к объекту по индексу
+    //прямой доступ к объекту по индексу
     T& Get(size_t index) {
         if (index >= count) {
             throw std::out_of_range("DynamicArray: index out of range");
@@ -100,8 +96,7 @@ public:
         return *items[index];
     }
 
-    // Разделяемая ссылка на элемент — создаёт ShrdPtr,
-    // ссылающийся на внутренний UnqPtr этого элемента
+    //разделяемая ссылка на элемент создаёт ShrdPtr ссылающийся на внутренний UnqPtr этого элемента
     ShrdPtr<T> Share(size_t index) {
         if (index >= count) {
             throw std::out_of_range("DynamicArray: index out of range");
