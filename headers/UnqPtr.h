@@ -3,7 +3,6 @@
 #include <cstddef>
 #include <type_traits> // для std::is_convertible_v
 
-
 //UnqPtr<T> умный указатель с единоличным владением копирование запрещено разрешено только перемещение
 //size_t* referenceCount чтобы при разрушении проверить отсутствие живых ShrdPtr на этот объект
 
@@ -23,7 +22,6 @@ public:
     UnqPtr(T* p = nullptr) noexcept : ptr(p), referenceCount(nullptr) {}
 
     ~UnqPtr() {
-        // В учебных целях считаем это ошибкой программиста и ловим через assert.
         assert((referenceCount == nullptr || *referenceCount == 0) &&
                "UnqPtr is destroyed as long as there are live ShrdPtrs on it!");
         delete ptr;
